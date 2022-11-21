@@ -3,11 +3,16 @@
 #include <stdlib.h>
 
 using namespace std;
-typedef struct Library {
+class Library{
+public:
   int availability;
   int book_id;
   string book_name;
-}Library;
+
+  static void ViewListOfBooks();
+  static void RequestBook();
+  static void ReturnBook();
+};
 Library Book[20];
 
 string split(string s) {
@@ -17,7 +22,7 @@ string split(string s) {
   return s;
 }
 
-void ViewListOfBooks(void) {
+void Library::ViewListOfBooks(void) {
   for (int i = 0; i < 20; ++i) {
     if (Book[i].availability) {
       cout << Book[i].availability << "\t";
@@ -25,11 +30,11 @@ void ViewListOfBooks(void) {
       cout << Book[i].book_name << "\t";
       cout << endl;
     }
-    else cout << "There is no copies available to borrow in the ID of " << Book[i].book_id  << " and name of " << Book[i].book_name << endl; 
+    else cout << "There is no copies available to borrow in the ID of " << Book[i].book_id  << " and in the name of [" << Book[i].book_name << "]" << endl; 
   }
 }
 
-void RequestBook(void) {
+void Library::RequestBook(void) {
   int ID;
   cout << "Enter the Book ID :"; cin >> ID;
   if (ID < 20 && ID >=1) {
@@ -42,7 +47,7 @@ void RequestBook(void) {
   else cout << "Book ID is not correct. Please try again" << endl;
 }
 
-void ReturnBook(void) {
+void Library::ReturnBook(void) {
   int ID;
   cout << "Enter the Book ID :"; cin >> ID;
   if (ID < 20 && ID >=1) {
@@ -76,9 +81,9 @@ int main() {
 
       cout << "\t\t\t\t\t\t Option :";cin >> option;
       switch(option) {
-        case 1: ViewListOfBooks(); break;
-        case 2: RequestBook(); break;
-        case 3: ReturnBook(); break;
+        case 1: Library::ViewListOfBooks(); break;
+        case 2: Library::RequestBook(); break;
+        case 3: Library::ReturnBook(); break;
         case 4: exit(3);
         default: cout << "Error in choosing option.\nPlease select a valid option ";
         }
