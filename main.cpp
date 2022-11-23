@@ -4,14 +4,14 @@
 
 using namespace std;
 class Library{
-public:
-  int availability;
-  int book_id;
-  string book_name;
+  public:
+    int availability;
+    int book_id;
+    string book_name;
 
-  static void ViewListOfBooks();
-  static void RequestBook();
-  static void ReturnBook();
+    static void ViewListOfBooks();
+    static void RequestBook();
+    static void ReturnBook();
 };
 Library Book[20];
 
@@ -38,7 +38,7 @@ void Library::RequestBook(void) {
   int ID;
   cout << "Enter the Book ID :"; cin >> ID;
   if (ID < 20 && ID >=1) {
-    if (Book[ID - 1].availability) {
+    if (Book[ID - 1].availability > 0) {
       cout << "Congratulations Customer your book is allocated. Please collect it from the shelf." << endl;
       --Book[ID - 1].availability;  
     }
