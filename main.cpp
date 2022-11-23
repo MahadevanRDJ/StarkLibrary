@@ -1,14 +1,13 @@
 #include <bits/stdc++.h>
 #include <fstream>
 #include <stdlib.h>
-
 using namespace std;
 class Library{
   public:
     int availability;
     int book_id;
     string book_name;
-
+    static void Introduction();
     static void ViewListOfBooks();
     static void RequestBook();
     static void ReturnBook();
@@ -21,7 +20,11 @@ string split(string s) {
   }
   return s;
 }
-
+void Library::Introduction () {
+   cout << " A library is a collection of materials, books or media that are accessible for use and not just for display purposes. \n"
+   "A library provides physical or digital access materials, and may be a physical location or a virtual space, or both. \n" 
+   "A library's collection can include printed materials and other physical resources in many formats such as DVD, CD and cassette as well as access to information, music or other content held on bibliographic databases.\n";
+}
 void Library::ViewListOfBooks(void) {
   for (int i = 0; i < 20; ++i) {
     if (Book[i].availability) {
@@ -81,6 +84,7 @@ int main() {
 
       cout << "\t\t\t\t\t\t Option :";cin >> option;
       switch(option) {
+        case 0: Library::Introduction(); break;
         case 1: Library::ViewListOfBooks(); break;
         case 2: Library::RequestBook(); break;
         case 3: Library::ReturnBook(); break;
